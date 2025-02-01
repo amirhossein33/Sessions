@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35431.28
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SOLID", "Sample\SOLID.csproj", "{0B2DB572-7FC9-4DA2-BB37-44B5372D67C5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SOLID", "Sample\SOLID.csproj", "{0B2DB572-7FC9-4DA2-BB37-44B5372D67C5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simplicity-Driven Development", "Simplicity-Driven Development\Simplicity-Driven Development.csproj", "{90DE7B00-CFE8-4AE5-8C46-38EE1C5B670B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Simplicity-Driven Development", "Simplicity-Driven Development\Simplicity-Driven Development.csproj", "{90DE7B00-CFE8-4AE5-8C46-38EE1C5B670B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Session_1", "Session_1", "{27F91F60-25B3-49E0-AE7F-3B2F66C3B596}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,6 +26,10 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{0B2DB572-7FC9-4DA2-BB37-44B5372D67C5} = {27F91F60-25B3-49E0-AE7F-3B2F66C3B596}
+		{90DE7B00-CFE8-4AE5-8C46-38EE1C5B670B} = {27F91F60-25B3-49E0-AE7F-3B2F66C3B596}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {49EE4D09-6432-4757-A82A-D61A29BD0057}
