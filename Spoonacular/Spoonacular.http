@@ -1,0 +1,6 @@
+@Spoonacular_HostAddress = http://localhost:5074
+
+GET {{Spoonacular_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
