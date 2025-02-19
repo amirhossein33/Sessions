@@ -1,11 +1,11 @@
 ﻿using System.Text.Json;
 
-namespace Spoonacular
+namespace Coingecko
 {
     public class RecipeService : IRecipeService
     {
         private readonly HttpClient _httpClient;
-        private const string ApiKey = "06f0fb8a229d4ed08108858df97cf6b6";
+        private const string ApiKey = "06f0fb8a229d4ed08108858df97cf6b6"; // کلید API
 
         public RecipeService(HttpClient httpClient)
         {

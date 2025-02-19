@@ -1,0 +1,6 @@
+@Coingecko_HostAddress = http://localhost:5236
+
+GET {{Coingecko_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

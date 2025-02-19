@@ -1,6 +1,6 @@
 ﻿using System.Collections.Concurrent;
 
-namespace ConcurrentQueue_Test
+namespace ConcurrentQueueTest
 {
     public class Program
     {
@@ -20,7 +20,7 @@ namespace ConcurrentQueue_Test
         }
     }
 
-    class ClinicQueue
+    public class ClinicQueue
     {
         private ConcurrentQueue<Patient> _patientQueue = new();
 
