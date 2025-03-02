@@ -1,0 +1,6 @@
+@ContextPooling_HostAddress = http://localhost:5226
+
+GET {{ContextPooling_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
