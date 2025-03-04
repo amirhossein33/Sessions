@@ -2,7 +2,7 @@
 
 namespace FacadePattern
 {
-    // زیرسیستم‌ها (RobotBody, RobotColor, RobotHands)
+    // Subsystems (RobotBody, RobotColor, RobotHands)
     namespace RobotParts
     {
         public class RobotBody
@@ -28,7 +28,7 @@ namespace FacadePattern
         }
     }
 
-    // کلاس Facade
+    // Facade class
     public class RobotFacade
     {
         private RobotParts.RobotColor rc;
@@ -81,7 +81,7 @@ namespace FacadePattern
         }
     }
 
-    // کلاس اصلی
+    // Main class
     class Program
     {
         static void Main(string[] args)
@@ -101,3 +101,10 @@ namespace FacadePattern
         }
     }
 }
+
+/*
+Explanation of the implementation:
+
+1\. **Subsystems (RobotParts namespace)**:
+   - `RobotBody`, `RobotColor`, and `RobotHands` classes represent different parts of the robot.
+*/

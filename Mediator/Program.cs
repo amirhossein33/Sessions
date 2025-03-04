@@ -10,7 +10,7 @@ namespace MediatorPattern
     // ConcreteMediator
     class ConcreteMediator : IMediator
     {
-        List<Friend> participants = new List<Friend>();
+        private List<Friend> participants = [];
 
         public void Register(Friend friend)
         {
@@ -120,10 +120,10 @@ namespace MediatorPattern
         {
             Console.WriteLine("***Mediator Pattern Demo***\n");
 
-            ConcreteMediator mediator = new ConcreteMediator();
-            Friend1 Amit = new Friend1(mediator, "Amit");
-            Friend2 Sohel = new Friend2(mediator, "Sohel");
-            Boss Raghu = new Boss(mediator, "Raghu");
+            ConcreteMediator mediator = new ();
+            Friend1 Amit = new (mediator, "Amit");
+            Friend2 Sohel = new (mediator, "Sohel");
+            Boss Raghu = new (mediator, "Raghu");
 
             // Register participants
             mediator.Register(Amit);

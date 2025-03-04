@@ -9,7 +9,7 @@ namespace SingletonPatternEx
         private static readonly Singleton instance = new();
 
         // متغیر برای شمارش تعداد نمونه‌ها (در اینجا فقط یک نمونه داریم)
-        private int numberOfInstances = 0;
+        private readonly int numberOfInstances = 0;
 
         // سازنده خصوصی که اجازه ایجاد نمونه خارج از کلاس را نمی‌دهد
         private Singleton()
@@ -29,42 +29,13 @@ namespace SingletonPatternEx
             }
         }
     }
-    // Double Checked Locking
 
-
-    //public sealed class Singleton
-    //{
-    //    // ما از volatile استفاده می‌کنیم تا اطمینان حاصل کنیم که
-    //    // تخصیص به متغیر instance قبل از دسترسی به آن کامل شده است.
-    //    private static volatile Singleton instance;
-    //    private static object lockObject = new Object();
-
-    //    private Singleton() { }
-
-    //    public static Singleton Instance
-    //    {
-    //        get
-    //        {
-    //            if (instance == null)
-    //            {
-    //                lock (lockObject)
-    //                {
-    //                    if (instance == null)
-    //                        instance = new Singleton();
-    //                }
-    //            }
-    //            return instance;
-    //        }
-    //    }
-    //}
-
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
             Console.WriteLine("*** Singleton Pattern Demo ***\n");
 
-            // تلاش برای ایجاد نمونه اول
             Console.WriteLine("Trying to create instance s1.");
             Singleton s1 = Singleton.Instance;
 

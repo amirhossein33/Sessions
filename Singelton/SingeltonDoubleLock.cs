@@ -15,7 +15,7 @@ namespace Singelton.DoubleLock
         // ما از volatile استفاده می‌کنیم تا اطمینان حاصل کنیم که
         // تخصیص به متغیر instance قبل از دسترسی به آن کامل شده است.
         private static volatile Singleton instance;
-        private static object lockObject = new Object();
+        private static object lockObject = new();
 
         private Singleton() { }
 
@@ -27,8 +27,7 @@ namespace Singelton.DoubleLock
                 {
                     lock (lockObject)
                     {
-                        if (instance == null)
-                            instance = new Singleton();
+                        instance ??= new Singleton();
                     }
                 }
                 return instance;

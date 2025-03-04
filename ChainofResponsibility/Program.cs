@@ -2,14 +2,14 @@
 
 namespace ChainOfResponsibilityPattern
 {
-    // تعیین سطح اولویت پیام‌ها
+    // Define message priority levels
     public enum MessagePriority
     {
         Normal,
         High
     }
 
-    // کلاس پیام شامل متن و سطح اولویت
+    // Message class containing text and priority level
     public class Message
     {
         public string Text;
@@ -22,13 +22,13 @@ namespace ChainOfResponsibilityPattern
         }
     }
 
-    // اینترفیس پردازشگر درخواست‌ها
+    // Interface for message handlers
     public interface IReceiver
     {
         bool HandleMessage(Message message);
     }
 
-    // پردازشگر اصلی که پیام را به زنجیره پردازش ارسال می‌کند
+    // Main handler that passes the message down the chain
     public class IssueRaiser
     {
         private IReceiver firstReceiver;
@@ -45,7 +45,7 @@ namespace ChainOfResponsibilityPattern
         }
     }
 
-    // پردازشگر مشکلات مربوط به فکس
+    // Fax error handler
     public class FaxErrorHandler : IReceiver
     {
         private IReceiver nextReceiver;
@@ -59,7 +59,7 @@ namespace ChainOfResponsibilityPattern
         {
             if (message.Text.Contains("Fax"))
             {
-                Console.WriteLine("📠 FaxErrorHandler پردازش شد: {0} - اولویت: {1}",
+                Console.WriteLine("📠 FaxErrorHandler processed: {0} - Priority: {1}",
                     message.Text, message.Priority);
                 return true;
             }
@@ -71,7 +71,7 @@ namespace ChainOfResponsibilityPattern
         }
     }
 
-    // پردازشگر مشکلات مربوط به ایمیل
+    // Email error handler
     public class EmailErrorHandler : IReceiver
     {
         private IReceiver nextReceiver;
@@ -85,7 +85,7 @@ namespace ChainOfResponsibilityPattern
         {
             if (message.Text.Contains("Email"))
             {
-                Console.WriteLine("📧 EmailErrorHandler پردازش شد: {0} - اولویت: {1}",
+                Console.WriteLine("📧 EmailErrorHandler processed: {0} - Priority: {1}",
                     message.Text, message.Priority);
                 return true;
             }
@@ -97,27 +97,27 @@ namespace ChainOfResponsibilityPattern
         }
     }
 
-    // کلاس اصلی برنامه برای اجرای زنجیره پردازش
+    // Main program class to execute the processing chain
     class Program
     {
         static void Main(string[] args)
         {
             Console.WriteLine("\n🔗 *** Chain of Responsibility Pattern Demo *** 🔗\n");
 
-            // ایجاد پردازشگرهای خطا
+            // Create error handlers
             IReceiver emailHandler = new EmailErrorHandler(null);
             IReceiver faxHandler = new FaxErrorHandler(emailHandler);
 
-            // شروع زنجیره‌ی پردازش
+            // Start the processing chain
             IssueRaiser raiser = new IssueRaiser(faxHandler);
 
-            // ایجاد پیام‌های تستی
-            Message m1 = new ("Fax is reaching late to the destination.", MessagePriority.Normal);
-            Message m2 = new ("Emails are not reaching destinations.", MessagePriority.High);
-            Message m3 = new ("In Email, CC field is disabled always.", MessagePriority.Normal);
-            Message m4 = new ("Fax is not reaching destination.", MessagePriority.High);
+            // Create test messages
+            Message m1 = new("Fax is reaching late to the destination.", MessagePriority.Normal);
+            Message m2 = new("Emails are not reaching destinations.", MessagePriority.High);
+            Message m3 = new("In Email, CC field is disabled always.", MessagePriority.Normal);
+            Message m4 = new("Fax is not reaching destination.", MessagePriority.High);
 
-            // ارسال پیام‌ها برای پردازش
+            // Send messages for processing
             raiser.RaiseMessage(m1);
             raiser.RaiseMessage(m2);
             raiser.RaiseMessage(m3);

@@ -2,14 +2,14 @@
 
 namespace FactoryMethodPattern
 {
-    // 1. اینترفیس مشترک برای همه اشکال هندسی
+    // 1. Common interface for all geometric shapes
     public interface IShape
     {
         void Draw();
         void Area();
     }
 
-    // 2. پیاده‌سازی کلاس‌های محصول (Concrete Products)
+    // 2. Concrete Product classes
     public class Circle : IShape
     {
         public void Draw() => Console.WriteLine("Drawing a Circle.");
@@ -28,23 +28,23 @@ namespace FactoryMethodPattern
         public void Area() => Console.WriteLine("Formula: 0.5 × base × height\n");
     }
 
-    // 3. کلاس کارخانه انتزاعی (Abstract Factory) با متد MakeShape()
+    // 3. Abstract Factory class with MakeShape() method
     public abstract class ShapeFactory
     {
         public IShape MakeShape()
         {
             Console.WriteLine("\nShapeFactory.MakeShape() - Enforcing factory rules.");
-            IShape shape = CreateShape(); // متد Factory که زیرکلاس آن را پیاده‌سازی می‌کند
+            IShape shape = CreateShape(); // Factory method implemented by subclasses
             shape.Draw();
             shape.Area();
             return shape;
         }
 
-        // متد انتزاعی که زیرکلاس‌ها باید پیاده‌سازی کنند
+        // Abstract method to be implemented by subclasses
         public abstract IShape CreateShape();
     }
 
-    // 4. پیاده‌سازی کارخانه‌های خاص (Concrete Factories)
+    // 4. Concrete Factory classes
     public class CircleFactory : ShapeFactory
     {
         public override IShape CreateShape() => new Circle();
@@ -60,24 +60,23 @@ namespace FactoryMethodPattern
         public override IShape CreateShape() => new Triangle();
     }
 
-   
     class Client
     {
         static void Main(string[] args)
         {
             Console.WriteLine("***Factory Method Pattern Demo - Geometric Shapes***\n");
 
-            // ایجاد کارخانه دایره
+            // Create Circle factory
             ShapeFactory circleFactory = new CircleFactory();
-            IShape aCircle = circleFactory.MakeShape(); // استفاده از MakeShape()
+            IShape aCircle = circleFactory.MakeShape();
 
-            // ایجاد کارخانه مستطیل
+            // Create Rectangle factory
             ShapeFactory rectangleFactory = new RectangleFactory();
-            IShape aRectangle = rectangleFactory.MakeShape(); // استفاده از MakeShape()
+            IShape aRectangle = rectangleFactory.MakeShape();
 
-            // ایجاد کارخانه مثلث
+            // Create Triangle factory
             ShapeFactory triangleFactory = new TriangleFactory();
-            IShape aTriangle = triangleFactory.MakeShape(); // استفاده از MakeShape()
+            IShape aTriangle = triangleFactory.MakeShape();
 
             Console.ReadKey();
         }

@@ -2,14 +2,14 @@
 
 namespace SimpleFactoryPattern
 {
-    // 1. اینترفیس مشترک برای همه حیوانات
+    // 1. Common interface for all animals
     public interface IAnimal
     {
         void Speak();
         void Action();
     }
 
-    // 2. پیاده‌سازی کلاس‌های حیوانات
+    // 2. Implementation of animal classes
     public class Dog : IAnimal
     {
         public void Speak() => Console.WriteLine("Dog says: Bow-Wow.");
@@ -22,46 +22,42 @@ namespace SimpleFactoryPattern
         public void Action() => Console.WriteLine("Tigers prefer hunting...");
     }
 
-    // 3. تعریف enum برای انواع حیوانات
+    // 3. Define enum for animal types
     public enum AnimalType
     {
         Dog,
         Tiger
     }
 
-    // 4. کلاس انتزاعی کارخانه
-    public abstract class ISimpleFactory
+    // 4. Abstract factory class
+    public abstract class SimpleFactoryP
     {
         public abstract IAnimal CreateAnimal(AnimalType type);
     }
 
-    // 5. پیاده‌سازی کلاس Simple Factory
-    public class SimpleFactory : ISimpleFactory
+    public class SimpleFactory : SimpleFactoryP
     {
         public override IAnimal CreateAnimal(AnimalType type)
         {
-            IAnimal intendedAnimal = null;
-
             Console.WriteLine($"You have chosen {type}");
-
             switch (type)
             {
                 case AnimalType.Dog:
-                    intendedAnimal = new Dog();
+                    _ = new Dog();
                     break;
                 case AnimalType.Tiger:
-                    intendedAnimal = new Tiger();
+                    _ = new Tiger();
                     break;
                 default:
                     Console.WriteLine("Invalid animal type.");
                     throw new ApplicationException("Unknown Animal cannot be instantiated");
             }
 
-            return intendedAnimal;
+            return null;
         }
     }
 
-    // 6. پیاده‌سازی کلاس Client
+    // 6. Implementation of the Client class
     class Client
     {
         static void Main(string[] args)
@@ -69,9 +65,9 @@ namespace SimpleFactoryPattern
             Console.WriteLine("*** Simple Factory Pattern Demo ***\n");
 
             IAnimal preferredType = null;
-            ISimpleFactory simpleFactory = new SimpleFactory();
+            SimpleFactoryP simpleFactory = new SimpleFactory();
 
-            #region کدی که بسته به ورودی کاربر تغییر می‌کند
+            #region Code that varies based on user input
             Console.WriteLine("Enter your choice (0 for Dog, 1 for Tiger):");
             string inputStr = Console.ReadLine();
             int input;
@@ -94,7 +90,7 @@ namespace SimpleFactoryPattern
             }
             #endregion
 
-            #region کدی که تغییر نمی‌کند
+            #region Code that does not vary
             if (preferredType != null)
             {
                 preferredType.Speak();
