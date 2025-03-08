@@ -119,7 +119,7 @@ public class StockValidationHandler : OrderHandler
 {
     public override void Handle(Order order)
     {
-        Logger.Instance.Log("بررسی موجودی کالا...");
+        Logger.Instance.Log("Product ...");
         NextHandler?.Handle(order);
     }
 }
@@ -128,7 +128,7 @@ public class PaymentValidationHandler : OrderHandler
 {
     public override void Handle(Order order)
     {
-        Logger.Instance.Log("بررسی صحت پرداخت...");
+        Logger.Instance.Log("Paid...");
         NextHandler?.Handle(order);
     }
 }

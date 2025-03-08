@@ -2,10 +2,10 @@
 
 namespace TemplateMethodPattern
 {
-    // 1️⃣ کلاس انتزاعی که مراحل اصلی آماده‌سازی غذا را مشخص می‌کند
+    
     public abstract class FoodPreparation
     {
-        // متد Template که ترتیب کلی مراحل را مشخص می‌کند
+        
         public void PrepareFood()
         {
             GatherIngredients();
@@ -15,7 +15,7 @@ namespace TemplateMethodPattern
             Serve();
         }
 
-        // مراحل مشترک (برای همه غذاها یکسان است)
+        
         private void GatherIngredients()
         {
             Console.WriteLine("Gathering ingredients...");
@@ -31,12 +31,12 @@ namespace TemplateMethodPattern
             Console.WriteLine("Serving the food.\n");
         }
 
-        // متدهای انتزاعی که هر غذا باید پیاده‌سازی کند
+        
         protected abstract void PrepareMainItem();
         protected abstract void AddCondiments();
     }
 
-    // 2️⃣ کلاس پیتزا (Pizza)
+   
     public class Pizza : FoodPreparation
     {
         protected override void PrepareMainItem()
@@ -50,7 +50,7 @@ namespace TemplateMethodPattern
         }
     }
 
-    // 3️⃣ کلاس همبرگر (Burger)
+    
     public class Burger : FoodPreparation
     {
         protected override void PrepareMainItem()
@@ -64,7 +64,7 @@ namespace TemplateMethodPattern
         }
     }
 
-    // 4️⃣ برنامه اصلی (Client)
+  
     class Program
     {
         static void Main(string[] args)
